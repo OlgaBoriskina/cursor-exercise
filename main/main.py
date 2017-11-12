@@ -1,10 +1,9 @@
-
 from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
-from submenu import ActionSubmenu
 
-import autorization
+import authorization
 import unittest
+import submenu
 
 base_url = "http://way2automation.com/way2auto_jquery"
 
@@ -14,13 +13,13 @@ class Test (unittest.TestCase):
         self.driver = webdriver.Chrome("chromedriver.exe")
         self.driver.get(base_url)
         self.wait = WebDriverWait(self.driver, 10)
-        autorization.autirize(self.wait)
+        authorization.authorize(self.wait)
         self.driver.refresh()
         self.driver.get(base_url + "/menu.php")
 
     def test_action_submenu(self):
-        submenu = ActionSubmenu(self.driver)
-        assert(submenu.action_submenu().is_displayed())
+        submenu_action = submenu.action(self.driver, self.wait)
+        assert(submenu_action.is_displayed())
 
     def tearDown(self):
         self.driver.quit()
