@@ -1,9 +1,9 @@
 from selenium import webdriver
 from selenium.webdriver.support.wait import WebDriverWait
 
-import authorization
+import authorization.authorization as authorization
+import action.submenu as submenu
 import unittest
-import submenu
 
 base_url = "http://way2automation.com/way2auto_jquery"
 
